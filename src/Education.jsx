@@ -13,8 +13,9 @@ const Education = () => {
 
   return (
     <section id="education" style={{ padding: '4rem 0' }}>
-      <Reveal><h2 className="section-title">Education</h2></Reveal>
-      <div style={{ display: 'grid', gap: '2rem' }}>
+      <div className="container">
+        <Reveal><h2 className="section-title">Education</h2></Reveal>
+        <div style={{ display: 'grid', gap: '2rem' }}>
         <Reveal>
           <div className="glass-card" onMouseMove={handleMouseMove}>
             <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem', marginBottom: '0.5rem' }}>
@@ -35,6 +36,7 @@ const Education = () => {
             </div>
           </div>
         </Reveal>
+        </div>
       </div>
     </section>
   );

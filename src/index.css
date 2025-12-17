@@ -18,20 +18,32 @@
 
 html {
   scroll-behavior: smooth;
+  width: 100%;
+  overflow-x: hidden;
+  background-color: var(--bg);
 }
 
 body {
-  background-color: var(--bg);
+  background-color: transparent;
   color: var(--text-primary);
-  background-image: 
-    radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 100% 50%, rgba(168, 85, 247, 0.05) 0%, transparent 50%);
-  background-attachment: fixed;
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  width: 100%;
+  min-height: 100vh;
   line-height: 1.6;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 100% 50%, rgba(168, 85, 247, 0.05) 0%, transparent 50%);
+  z-index: -1;
+  pointer-events: none;
 }
 
 a {
@@ -120,7 +132,7 @@ a:hover {
 
 @media (max-width: 768px) {
   * { cursor: auto !important; } /* Restore default cursor on touch devices */
-  .container { padding: 0 1.5rem; }
+  .container { padding: 0 1rem; }
 }
 
 /* Hero Section Improvements */

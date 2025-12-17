@@ -42,8 +42,9 @@ const Projects = () => {
 
   return (
     <section id="projects" style={{ padding: '8rem 0' }}>
-      <Reveal><h2 className="section-title">Selected Works</h2></Reveal>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', perspective: '2000px' }}>
+      <div className="container">
+        <Reveal><h2 className="section-title">Selected Works</h2></Reveal>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem', perspective: '2000px' }}>
         {projects.map((p, i) => (
           <motion.div
             key={i}
@@ -77,6 +78,7 @@ const Projects = () => {
               </div>
           </motion.div>
         ))}
+        </div>
       </div>
     </section>
   );
