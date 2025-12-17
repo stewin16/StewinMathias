@@ -6,6 +6,26 @@ import { ArrowDown } from 'lucide-react';
 const Hero = () => {
   const { textEnter, textLeave } = useContext(CursorContext);
 
+  const handleMouseMove = (e) => {
+    const { currentTarget: target } = e;
+    const rect = target.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = ((y - centerY) / centerY) * -10;
+    const rotateY = ((x - centerX) / centerX) * 10;
+
+    target.style.setProperty("--rotate-x", `${rotateX}deg`);
+    target.style.setProperty("--rotate-y", `${rotateY}deg`);
+  };
+
+  const handleMouseLeave = (e) => {
+    e.currentTarget.style.setProperty("--rotate-x", "0deg");
+    e.currentTarget.style.setProperty("--rotate-y", "0deg");
+  };
+
   return (
     <section id="hero" style={{ minHeight: '100dvh', display: 'flex', alignItems: 'center', position: 'relative', paddingTop: '92px', paddingBottom: '92px' }}>
       <div className="hero-grid">
@@ -32,6 +52,8 @@ const Hero = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           className="hero-image-wrapper"
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
         >
           {/* Replace src with your actual image path, e.g., "/profile.jpg" */}
           <img src="/profile.jpg" alt="Stewin Navin Mathias" className="hero-image" />
@@ -41,7 +63,8 @@ const Hero = () => {
       <motion.div 
         animate={{ y: [0, 10, 0] }} 
         transition={{ repeat: Infinity, duration: 2 }}
-        style={{ position: 'absolute', bottom: '2rem', left: '50%', transform: 'translateX(-50%)', opacity: 0.5 }}>
+        onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+        style={{ position: 'absolute', bottom: '2rem', left: '50%', transform: 'translateX(-50%)', opacity: 0.5, cursor: 'pointer' }}>
         <ArrowDown />
       </motion.div>
     </section>
