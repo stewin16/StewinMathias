@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 
-// Force deployment update - Fix 3D Hero
+// Force deployment update - Remove 3D Hero effect
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <App />

@@ -168,20 +168,6 @@ a:hover {
   max-width: 460px;
   aspect-ratio: 1;
   margin: 0 auto;
-  perspective: 1000px;
-  transform-style: preserve-3d;
-  transform: rotateX(var(--rotate-x, 0deg)) rotateY(var(--rotate-y, 0deg));
-  transition: transform 0.1s ease-out;
-}
-
-.hero-image-wrapper::before {
-  content: "";
-  position: absolute;
-  inset: -20px;
-  background: radial-gradient(circle at 50% 50%, var(--accent-glow), transparent 70%);
-  opacity: 0.6;
-  z-index: -1;
-  filter: blur(30px);
 }
 
 .hero-image {

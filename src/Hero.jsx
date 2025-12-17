@@ -6,26 +6,6 @@ import { ArrowDown } from 'lucide-react';
 const Hero = () => {
   const { textEnter, textLeave } = useContext(CursorContext);
 
-  const handleMouseMove = (e) => {
-    const { currentTarget: target } = e;
-    const rect = target.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    const rotateX = ((y - centerY) / centerY) * -10;
-    const rotateY = ((x - centerX) / centerX) * 10;
-
-    target.style.setProperty("--rotate-x", `${rotateX}deg`);
-    target.style.setProperty("--rotate-y", `${rotateY}deg`);
-  };
-
-  const handleMouseLeave = (e) => {
-    e.currentTarget.style.setProperty("--rotate-x", "0deg");
-    e.currentTarget.style.setProperty("--rotate-y", "0deg");
-  };
-
   return (
     <section id="hero" style={{ minHeight: '100dvh', display: 'flex', alignItems: 'center', position: 'relative', paddingTop: '92px', paddingBottom: '92px' }}>
       <div className="hero-grid">
@@ -55,8 +35,6 @@ const Hero = () => {
         >
           <div 
             className="hero-image-wrapper"
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
           >
             <img src="/profile.jpg" alt="Stewin Navin Mathias" className="hero-image" />
           </div>
