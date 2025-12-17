@@ -25,7 +25,7 @@ html {
 }
 
 @media (min-width: 1024px) {
-  html { font-size: 135%; }
+  html { font-size: 120%; }
 }
 
 body {
@@ -81,7 +81,7 @@ a:hover {
 
 /* Utilities */
 .container {
-  max-width: 1600px;
+  max-width: 1350px;
   margin: 0 auto;
   padding: 0 2rem;
 }
