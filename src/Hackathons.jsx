@@ -7,7 +7,7 @@ const hacks = [
     year: "2024", 
     role: "Finalist", 
     desc: "Built a decentralized voting system using Blockchain technology to ensure transparency and security in local elections.",
-    img: "/sih.jpg"
+    imgs: ["/sih.jpg", "/sih2.jpg", "/sih3.jpg"]
   }
 ];
 
@@ -23,7 +23,24 @@ const Hackathons = () => {
               <span style={{ color: 'var(--accent)', fontWeight: 600, fontSize: '0.9rem' }}>{h.year}</span>
               <h3 style={{ fontSize: '1.5rem', margin: '0.5rem 0' }}>{h.name}</h3>
               <p style={{ color: 'var(--text-secondary)', fontSize: '1rem' }}>{h.role} — {h.desc}</p>
-              <img src={h.img} alt={h.name} className="hackathon-img" />
+              {h.imgs ? (
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1rem', marginTop: '1rem' }}>
+                  {h.imgs.map((img, idx) => (
+                    <img 
+                      key={idx} 
+                      src={img} 
+                      alt={`${h.name} ${idx + 1}`} 
+                      className="hackathon-img" 
+                      style={{ 
+                        marginBottom: 0,
+                        objectPosition: img.includes('sih3') ? 'center' : undefined
+                      }} 
+                    />
+                  ))}
+                </div>
+              ) : (
+                <img src={h.img} alt={h.name} className="hackathon-img" />
+              )}
             </div>
           </Reveal>
         ))}
