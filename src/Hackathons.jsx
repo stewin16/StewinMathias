@@ -3,8 +3,8 @@ import Reveal from './Reveal';
 
 const hacks = [
   { 
-    name: "Smart India Hackathon", 
-    year: "2024", 
+    name: "Smart India Hackathon 2025", 
+    year: "2025", 
     role: "Finalist | Team Lead", 
     desc: "Selected as a National Finalist to tackle a problem statement for ISRO. As Team Lead, I directed the 36-hour development sprint, overseeing everything from system architecture to the final pitch. We successfully transformed abstract requirements into a working prototype, a process that honed my ability to lead effectively and make critical technical decisions under extreme time pressure.",
     imgs: ["/sih.jpg", "/sih2.jpg", "/sih3.jpg"]
