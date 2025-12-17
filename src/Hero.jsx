@@ -51,12 +51,15 @@ const Hero = () => {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="hero-image-wrapper"
-          onMouseMove={handleMouseMove}
-          onMouseLeave={handleMouseLeave}
+          style={{ width: '100%', display: 'flex', justifyContent: 'center' }}
         >
-          {/* Replace src with your actual image path, e.g., "/profile.jpg" */}
-          <img src="/profile.jpg" alt="Stewin Navin Mathias" className="hero-image" />
+          <div 
+            className="hero-image-wrapper"
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+          >
+            <img src="/profile.jpg" alt="Stewin Navin Mathias" className="hero-image" />
+          </div>
         </motion.div>
       </div>
 
