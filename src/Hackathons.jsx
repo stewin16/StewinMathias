@@ -5,8 +5,8 @@ const hacks = [
   { 
     name: "Smart India Hackathon", 
     year: "2024", 
-    role: "Finalist", 
-    desc: "Built a decentralized voting system using Blockchain technology to ensure transparency and security in local elections.",
+    role: "Finalist | Team Lead", 
+    desc: "Selected as a National Finalist to tackle a problem statement for ISRO. As Team Lead, I directed the 36-hour development sprint, overseeing everything from system architecture to the final pitch. We successfully transformed abstract requirements into a working prototype, a process that honed my ability to lead effectively and make critical technical decisions under extreme time pressure.",
     imgs: ["/sih.jpg", "/sih2.jpg", "/sih3.jpg"]
   }
 ];
