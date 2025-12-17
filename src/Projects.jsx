@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import Reveal from './Reveal';
 import { motion } from 'framer-motion';
-import { Github, ExternalLink } from 'lucide-react';
 import { CursorContext } from './CursorContext';
 
 const projects = [
@@ -10,21 +9,18 @@ const projects = [
     desc: "A high-performance digital storefront built with modern technologies, featuring real-time inventory management and secure payment processing.",
     tech: ["React", "Node.js", "MongoDB"],
     img: "https://images.unsplash.com/photo-1557821552-17105176677c?w=800&q=80",
-    links: { github: "https://github.com/stewin16", live: "#" }
   },
   {
     title: "Analytics Dashboard",
     desc: "Interactive data visualization suite allowing users to track metrics in real-time with smooth D3.js transitions and responsive layouts.",
     tech: ["Next.js", "D3.js", "Tailwind"],
     img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
-    links: { github: "https://github.com/stewin16", live: "#" }
   },
   {
     title: "AI Content Generator",
     desc: "A smart content creation tool leveraging AI APIs to help users generate marketing copy and blog posts efficiently.",
     tech: ["React", "Redux", "Stripe"],
     img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
-    links: { github: "https://github.com/stewin16", live: "#" }
   }
 ];
 
@@ -72,9 +68,13 @@ const Projects = () => {
                   <span key={t} style={{ fontSize: '0.8rem', background: 'rgba(255,255,255,0.1)', padding: '0.25rem 0.75rem', borderRadius: '20px' }}>{t}</span>
                 ))}
               </div>
-              <div style={{ display: 'flex', gap: '1.5rem' }}>
-                <a href={p.links.github} target="_blank" rel="noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}><Github size={18} /> Code</a>
-                <a href={p.links.live} target="_blank" rel="noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}><ExternalLink size={18} /> Live</a>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                <motion.div 
+                  animate={{ opacity: [0.4, 1, 0.4], scale: [1, 1.2, 1] }} 
+                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                  style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: 'var(--accent)', boxShadow: '0 0 10px var(--accent)' }}
+                />
+                <span style={{ color: 'var(--accent)', fontSize: '0.9rem', fontWeight: 500, letterSpacing: '0.02em' }}>Project in the making...</span>
               </div>
           </motion.div>
         ))}
