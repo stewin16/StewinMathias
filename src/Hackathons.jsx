@@ -22,7 +22,7 @@ const Hackathons = () => {
               <div style={{ position: 'absolute', left: '-2.35rem', top: '0.4rem', width: '10px', height: '10px', background: 'var(--accent)', borderRadius: '50%', boxShadow: '0 0 10px var(--accent-glow)' }}></div>
               <span style={{ color: 'var(--accent)', fontWeight: 600, fontSize: '0.9rem' }}>{h.year}</span>
               <h3 style={{ fontSize: '1.5rem', margin: '0.5rem 0' }}>{h.name}</h3>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '1rem' }}>{h.role} - {h.desc}</p>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '1rem' }}>{h.role} — {h.desc}</p>
               {h.imgs ? (
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1rem', marginTop: '1rem' }}>
                   {h.imgs.map((img, idx) => (
