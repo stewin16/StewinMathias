@@ -7,8 +7,21 @@ const Education = () => {
     const rect = target.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
+    
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = ((y - centerY) / centerY) * -7;
+    const rotateY = ((x - centerX) / centerX) * 7;
+
     target.style.setProperty("--mouse-x", `${x}px`);
     target.style.setProperty("--mouse-y", `${y}px`);
+    target.style.setProperty("--rotate-x", `${rotateX}deg`);
+    target.style.setProperty("--rotate-y", `${rotateY}deg`);
+  };
+
+  const handleMouseLeave = (e) => {
+    e.currentTarget.style.setProperty("--rotate-x", "0deg");
+    e.currentTarget.style.setProperty("--rotate-y", "0deg");
   };
 
   return (
@@ -17,7 +30,7 @@ const Education = () => {
         <Reveal><h2 className="section-title">Education</h2></Reveal>
         <div style={{ display: 'grid', gap: '2rem' }}>
         <Reveal>
-          <div className="glass-card" onMouseMove={handleMouseMove}>
+          <div className="glass-card" onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
             <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem', marginBottom: '0.5rem' }}>
               <h3 style={{ fontSize: '1.25rem' }}>B.Tech – Computer Engineering</h3>
               <span style={{ color: 'var(--accent)' }}>2024 – 2028</span>
@@ -27,7 +40,7 @@ const Education = () => {
           </div>
         </Reveal>
         <Reveal>
-          <div className="glass-card" onMouseMove={handleMouseMove}>
+          <div className="glass-card" onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
             <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>Higher Secondary (Class XII) & Secondary (Class X)</h3>
             <p style={{ color: 'var(--text-secondary)' }}>Maharashtra State Board</p>
             <div style={{ marginTop: '1rem', display: 'flex', gap: '2rem' }}>

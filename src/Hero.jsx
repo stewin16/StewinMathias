@@ -1,10 +1,27 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { CursorContext } from './CursorContext';
 import { ArrowDown } from 'lucide-react';
 
 const Hero = () => {
   const { textEnter, textLeave } = useContext(CursorContext);
+  const [displayName, setDisplayName] = useState("Stewin Navin Mathias");
+  const originalName = "Stewin Navin Mathias";
+  const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+  const handleNameHover = () => {
+    textEnter();
+    let iteration = 0;
+    const interval = setInterval(() => {
+      setDisplayName(prev => originalName.split("").map((letter, index) => {
+        if(index < iteration) return originalName[index];
+        return letters[Math.floor(Math.random() * 26)];
+      }).join(""));
+
+      if(iteration >= originalName.length) clearInterval(interval);
+      iteration += 1 / 3;
+    }, 30);
+  };
 
   return (
     <section id="hero" style={{ minHeight: '100dvh', display: 'flex', alignItems: 'center', position: 'relative', paddingTop: '92px', paddingBottom: '92px' }}>
@@ -15,8 +32,8 @@ const Hero = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <h2 style={{ color: 'var(--accent)', marginBottom: '1.5rem', fontSize: '1.2rem', fontWeight: 500 }}>Hello, I'm</h2>
-          <h1 onMouseEnter={textEnter} onMouseLeave={textLeave} style={{ fontSize: 'clamp(3rem, 9.2vw, 5.5rem)', fontWeight: 800, lineHeight: 1.1, marginBottom: '1.5rem', letterSpacing: '-0.02em' }}>
-            Stewin Navin Mathias
+          <h1 onMouseEnter={handleNameHover} onMouseLeave={textLeave} style={{ fontSize: 'clamp(3rem, 9.2vw, 5.5rem)', fontWeight: 800, lineHeight: 1.1, marginBottom: '1.5rem', letterSpacing: '-0.02em', cursor: 'default' }}>
+            {displayName}
           </h1>
           <h3 style={{ fontSize: 'clamp(1.5rem, 4.6vw, 2.5rem)', color: 'var(--text-secondary)', marginBottom: '2rem', fontWeight: 400 }}>
             Computer Engineering Student & <span style={{ color: '#fff' }}>Creative Developer</span>

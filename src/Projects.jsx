@@ -32,8 +32,24 @@ const Projects = () => {
     const rect = target.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
+    
+    // Calculate rotation (max 7 degrees)
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = ((y - centerY) / centerY) * -7;
+    const rotateY = ((x - centerX) / centerX) * 7;
+
     target.style.setProperty("--mouse-x", `${x}px`);
     target.style.setProperty("--mouse-y", `${y}px`);
+    target.style.setProperty("--rotate-x", `${rotateX}deg`);
+    target.style.setProperty("--rotate-y", `${rotateY}deg`);
+  };
+
+  const handleMouseLeave = (e) => {
+    const { currentTarget: target } = e;
+    target.style.setProperty("--rotate-x", "0deg");
+    target.style.setProperty("--rotate-y", "0deg");
+    textLeave();
   };
 
   return (
@@ -57,9 +73,11 @@ const Projects = () => {
                 transition: { delay: i * 0.2, duration: 1, type: "spring", bounce: 0.5 }
               })
             }}
-            whileHover={{ y: -10, transition: { duration: 0.2 } }}
             className="glass-card" 
-            onMouseEnter={textEnter} onMouseLeave={textLeave} onMouseMove={handleMouseMove}>
+            onMouseEnter={textEnter} 
+            onMouseLeave={handleMouseLeave} 
+            onMouseMove={handleMouseMove}
+          >
               <img src={p.img} alt={p.title} className="card-img" />
               <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>{p.title}</h3>
               <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', fontSize: '0.95rem' }}>{p.desc}</p>
