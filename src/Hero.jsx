@@ -7,21 +7,21 @@ const Hero = () => {
   const { textEnter, textLeave } = useContext(CursorContext);
 
   return (
-    <section id="hero" style={{ minHeight: '100dvh', display: 'flex', alignItems: 'center', position: 'relative', paddingTop: '80px', paddingBottom: '140px' }}>
+    <section id="hero" style={{ minHeight: '100dvh', display: 'flex', alignItems: 'center', position: 'relative', paddingTop: '80px', paddingBottom: '80px' }}>
       <div className="hero-grid">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <h2 style={{ color: 'var(--accent)', marginBottom: '1.5rem', fontSize: '1.5rem', fontWeight: 500 }}>Hello, I'm</h2>
-          <h1 onMouseEnter={textEnter} onMouseLeave={textLeave} style={{ fontSize: 'clamp(3.5rem, 9vw, 6.5rem)', fontWeight: 800, lineHeight: 1.1, marginBottom: '1.5rem', letterSpacing: '-0.02em' }}>
+          <h2 style={{ color: 'var(--accent)', marginBottom: '1.5rem', fontSize: '1.2rem', fontWeight: 500 }}>Hello, I'm</h2>
+          <h1 onMouseEnter={textEnter} onMouseLeave={textLeave} style={{ fontSize: 'clamp(3rem, 8vw, 5.5rem)', fontWeight: 800, lineHeight: 1.1, marginBottom: '1.5rem', letterSpacing: '-0.02em' }}>
             Stewin Navin Mathias
           </h1>
-          <h3 style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', color: 'var(--text-secondary)', marginBottom: '2rem', fontWeight: 400 }}>
+          <h3 style={{ fontSize: 'clamp(1.5rem, 4vw, 2.5rem)', color: 'var(--text-secondary)', marginBottom: '2rem', fontWeight: 400 }}>
             Computer Engineering Student & <span style={{ color: '#fff' }}>Creative Developer</span>
           </h3>
-          <p style={{ maxWidth: '650px', color: 'var(--text-secondary)', fontSize: '1.25rem', lineHeight: 1.8 }}>
+          <p style={{ maxWidth: '600px', color: 'var(--text-secondary)', fontSize: '1.1rem', lineHeight: 1.8 }}>
             I specialize in building high-performance web applications that blend technical expertise with premium design. 
             Currently focused on creating seamless digital experiences using modern React ecosystems.
           </p>
