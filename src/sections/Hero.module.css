@@ -1,0 +1,28 @@
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.name {
+  font-size: clamp(2.5rem, 8vw, 6rem);
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 1rem;
+  letter-spacing: -0.05em;
+  font-family: var(--font-sans);
+}
+
+.name span {
+  display: inline-block;
+}
+
+.intro {
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  max-width: 35ch;
+  color: var(--color-text-offset);
+  line-height: 1.6;
+}

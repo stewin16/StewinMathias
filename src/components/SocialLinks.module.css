@@ -1,0 +1,36 @@
+.socials {
+    position: fixed;
+    bottom: 0;
+    left: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  
+  .socials::after {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 90px;
+    margin: 0px auto;
+    background-color: var(--color-text-offset);
+  }
+  
+  .socials a {
+    font-size: 1.5rem;
+    color: var(--color-text-offset);
+    transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
+  }
+  
+  .socials a:hover {
+    color: var(--color-accent);
+    transform: translateY(-3px);
+  }
+  
+  @media (max-width: 768px) {
+    .socials {
+      display: none;
+    }
+  }
+  
