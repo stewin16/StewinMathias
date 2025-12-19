@@ -14,7 +14,19 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="section-padding-lg" style={{ textAlign: 'center' }}>
+    <section id="contact" className="section-padding-lg" style={{ textAlign: 'center', position: 'relative' }}>
+      <div style={{
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: '100%',
+        maxWidth: '600px',
+        aspectRatio: '1',
+        background: 'radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, transparent 70%)',
+        zIndex: -1,
+        pointerEvents: 'none'
+      }}></div>
       <Reveal width="100%">
         <h2 style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)', fontWeight: 800, marginBottom: '1.5rem' }}>Let's work together.</h2>
         <p style={{ color: 'var(--text-secondary)', marginBottom: '3rem', fontSize: '1.2rem' }}>

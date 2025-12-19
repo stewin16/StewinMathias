@@ -75,7 +75,13 @@ const Navbar = () => {
         ref={canvasRef} 
         style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none' }} 
       />
-      <div onMouseEnter={textEnter} onMouseLeave={textLeave} style={{ fontWeight: 800, fontSize: '1.5rem', color: '#fff', display: 'flex', alignItems: 'center', position: 'relative', zIndex: 1 }}>
+      <div 
+        onMouseEnter={textEnter} 
+        onMouseLeave={textLeave} 
+        style={{ fontWeight: 800, fontSize: '1.5rem', color: '#fff', display: 'flex', alignItems: 'center', position: 'relative', zIndex: 1, transition: 'transform 0.3s ease' }}
+        onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+        onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
+      >
         SM.
         <FestivalDoodle />
       </div>
@@ -119,26 +125,31 @@ const Navbar = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             className="mobile-menu"
-            style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '2rem' }}
           >
-            {['projects', 'hackathons', 'skills', 'education', 'contact'].map((item) => (
-              <a 
+            {['projects', 'hackathons', 'skills', 'education', 'contact'].map((item, i) => (
+              <motion.a
                 key={item}
                 href={`#${item}`}
                 onClick={() => setIsMobileMenuOpen(false)}
-                style={{ fontSize: '1.5rem', fontWeight: 600, color: activeSection === item ? 'var(--accent)' : '#fff', textTransform: 'capitalize' }}
+                style={{ color: activeSection === item ? 'var(--accent)' : '#fff' }}
+                initial={{ opacity: 0, y: 25 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: 0.2 + i * 0.07 }}
               >
                 {item}
-              </a>
+              </motion.a>
             ))}
-            <a 
+            <motion.a
               href="/resume.pdf" 
               target="_blank" 
               className="btn-primary"
               style={{ marginTop: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.1rem', padding: '0.8rem 2rem' }}
+              initial={{ opacity: 0, y: 25 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: 0.2 + 5 * 0.07 }}
             >
               <FileText size={20} /> Resume
-            </a>
+            </motion.a>
           </motion.div>
         )}
       </AnimatePresence>

@@ -4,7 +4,8 @@ import { motion } from 'framer-motion';
 
 const SocialLinks = () => {
   return (
-    <motion.div 
+    <motion.div
+      className="social-links"
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ delay: 1.5, duration: 0.5 }}
@@ -21,7 +22,7 @@ const SocialLinks = () => {
       <a href="https://github.com/stewin16" target="_blank" rel="noreferrer"><Github size={20} /></a>
       <a href="https://linkedin.com/in/stewin-navin-mathias" target="_blank" rel="noreferrer"><Linkedin size={20} /></a>
       <a href="mailto:mathiasstewinn@gmail.com"><Mail size={20} /></a>
-      <div style={{ width: '1px', height: '100px', background: '#333', marginTop: '1rem' }}></div>
+      <div style={{ width: '1px', height: '100px', background: 'linear-gradient(to bottom, #333, transparent)', marginTop: '1rem' }}></div>
     </motion.div>
   );
 };
