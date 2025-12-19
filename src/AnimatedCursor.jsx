@@ -31,6 +31,7 @@ const AnimatedCursor = () => {
 
   return (
     <motion.div
+      className="custom-cursor"
       style={{
         position: "fixed",
         top: 0,

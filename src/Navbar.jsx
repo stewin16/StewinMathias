@@ -61,6 +61,28 @@ const Navbar = () => {
     };
   }, []);
 
+  // Close mobile menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (isMobileMenuOpen && !event.target.closest('.mobile-menu') && !event.target.closest('.nav-toggle')) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [isMobileMenuOpen]);
+
+  // Safety: Close mobile menu if window resizes to desktop width
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 768) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const getLinkStyle = (section) => ({
     fontSize: '0.9rem',
     fontWeight: 500,
@@ -87,7 +109,7 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Menu Toggle */}
-      <div className="nav-toggle" style={{ position: 'relative', zIndex: 101 }}>
+      <div className="nav-toggle" style={{ position: 'relative', zIndex: 1001 }}>
         <button 
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           style={{ background: 'transparent', border: 'none', color: '#fff', display: 'flex', alignItems: 'center' }}
@@ -131,7 +153,7 @@ const Navbar = () => {
                 key={item}
                 href={`#${item}`}
                 onClick={() => setIsMobileMenuOpen(false)}
-                style={{ color: activeSection === item ? 'var(--accent)' : '#fff' }}
+                style={{ color: activeSection === item ? 'var(--accent)' : 'var(--text-secondary)', background: activeSection === item ? 'rgba(99, 102, 241, 0.1)' : 'transparent' }}
                 initial={{ opacity: 0, y: 25 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: 0.2 + i * 0.07 }}
@@ -143,7 +165,7 @@ const Navbar = () => {
               href="/resume.pdf" 
               target="_blank" 
               className="btn-primary"
-              style={{ marginTop: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.1rem', padding: '0.8rem 2rem' }}
+              style={{ marginTop: '0.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', fontSize: '0.95rem', padding: '0.6rem', width: '100%' }}
               initial={{ opacity: 0, y: 25 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: 0.2 + 5 * 0.07 }}

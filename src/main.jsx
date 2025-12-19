@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 
-// Force deployment update - Final check
+// Force deployment update - Final safety check for desktop
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <App />
