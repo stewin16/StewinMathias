@@ -277,3 +277,19 @@ a:hover {
   from { transform: translateX(0) rotateX(25deg) translateZ(-20px); }
   to { transform: translateX(-100%) rotateX(25deg) translateZ(-20px); }
 }
+
+/* New Year Floating Items */
+.floating-item {
+  position: absolute;
+  bottom: -150px;
+  opacity: 0.6;
+  animation: floatUp linear infinite;
+  pointer-events: none;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.8; }
+  90% { opacity: 0.8; }
+  100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
+}

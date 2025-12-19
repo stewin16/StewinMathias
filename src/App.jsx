@@ -12,10 +12,12 @@ import Footer from './Footer';
 import LiveStats from './LiveStats';
 import ScrollProgress from './ScrollProgress';
 import BackToTop from './BackToTop';
+import NewYearOverlay from './NewYearOverlay';
 
 function App() {
   return (
     <CursorProvider>
+      <NewYearOverlay />
       <ScrollProgress />
       <AnimatedCursor />
       <Navbar />

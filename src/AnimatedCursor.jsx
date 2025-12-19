@@ -40,7 +40,7 @@ const AnimatedCursor = () => {
         backgroundColor: "var(--accent)",
         borderRadius: "50%",
         pointerEvents: "none",
-        zIndex: 9999,
+        zIndex: 20000,
       }}
       variants={variants}
       animate={cursorVariant}

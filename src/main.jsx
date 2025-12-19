@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 
-// Force deployment update - Remove 3D Hero effect
+// Force deployment update - Fix Navbar Confetti visibility
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <App />
