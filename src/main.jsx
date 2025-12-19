@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 
-// Force deployment update - Fix Navbar Confetti visibility
+// Force deployment update - Hide festival doodle on mobile
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <App />

@@ -47,7 +47,7 @@ const FestivalDoodle = () => {
   if (!festival) return null;
 
   return (
-    <div style={{ marginLeft: '0.8rem', display: 'flex', alignItems: 'center', height: '24px', overflow: 'visible' }}>
+    <div className="festival-doodle" style={{ marginLeft: '0.8rem', display: 'flex', alignItems: 'center', height: '24px', overflow: 'visible' }}>
       <AnimatePresence mode="wait">
         {showWish ? (
           <motion.span

@@ -26,7 +26,7 @@ html {
   width: 100%;
   overflow-x: hidden;
   background-color: var(--bg);
-  font-size: 115%;
+  font-size: 115%; /* Desktop base size */
 }
 
 body {
@@ -151,6 +151,36 @@ a:hover {
 @media (max-width: 768px) {
   * { cursor: auto !important; } /* Restore default cursor on touch devices */
   .container { padding: 0 1rem; }
+}
+
+/* --- Responsive Spacing Utilities --- */
+.section-padding {
+  padding: 8rem 0;
+}
+.section-padding-sm {
+  padding: 4rem 0;
+}
+.section-padding-lg {
+  padding: 10rem 0 6rem;
+}
+
+@media (max-width: 768px) {
+  html { font-size: 100%; } /* Smaller base font for mobile */
+  
+  .section-padding { padding: 5rem 0; }
+  .section-padding-sm { padding: 3rem 0; }
+  .section-padding-lg { padding: 6rem 0 4rem; }
+  
+  .section-title { margin-bottom: 2.5rem; }
+  .glass-card { padding: 1.5rem; }
+  
+  /* Hide desktop nav links on mobile */
+  .nav-links-desktop { display: none !important; }
+}
+
+/* Show desktop nav links on larger screens */
+@media (min-width: 769px) {
+  .nav-toggle { display: none !important; }
 }
 
 /* Hero Section Improvements */
@@ -292,4 +322,81 @@ a:hover {
   10% { opacity: 0.8; }
   90% { opacity: 0.8; }
   100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
+}
+
+/* Mobile Menu Animation */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 5, 5, 0.98);
+  backdrop-filter: blur(20px);
+  z-index: 99;
+}
+
+/* --- Responsive Layout Components --- */
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+  background: rgba(5, 5, 5, 0.5);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  transition: padding 0.3s ease;
+}
+
+/* Timeline (Hackathons) */
+.timeline {
+  border-left: 1px solid var(--border);
+  padding-left: 2rem;
+  margin-left: 0.5rem;
+}
+
+.timeline-item {
+  margin-bottom: 3rem;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -2.35rem;
+  top: 0.4rem;
+  width: 10px;
+  height: 10px;
+  background: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--accent-glow);
+}
+
+/* Grids */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  perspective: 2000px;
+}
+
+.education-grid {
+  display: grid;
+  gap: 2rem;
+}
+
+/* Mobile Overrides */
+@media (max-width: 768px) {
+  .navbar { padding: 1rem 1.5rem; }
+  .timeline { padding-left: 1.5rem; margin-left: 0; }
+  .timeline-dot { left: -1.85rem; }
+  .projects-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  .education-grid { gap: 1.5rem; }
+  .festival-doodle { display: none !important; }
 }

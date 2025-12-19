@@ -5,7 +5,7 @@ const skills = ["React", "JavaScript (ES6+)", "CSS Modules", "Framer Motion", "G
 
 const Skills = () => {
   return (
-    <section id="skills" style={{ padding: '4rem 0' }}>
+    <section id="skills" className="section-padding-sm">
       <div className="container">
         <Reveal><h2 className="section-title">Skills</h2></Reveal>
         <Reveal width="100%">

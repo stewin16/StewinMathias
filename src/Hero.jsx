@@ -7,7 +7,7 @@ const Hero = () => {
   const { textEnter, textLeave } = useContext(CursorContext);
 
   return (
-    <section id="hero" style={{ minHeight: '100dvh', display: 'flex', alignItems: 'center', position: 'relative', paddingTop: '92px', paddingBottom: '92px' }}>
+    <section id="hero" style={{ minHeight: '100dvh', display: 'flex', alignItems: 'center', position: 'relative', paddingTop: '120px', paddingBottom: '80px' }}>
       <div className="hero-grid">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

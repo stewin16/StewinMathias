@@ -53,10 +53,10 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" style={{ padding: '8rem 0' }}>
+    <section id="projects" className="section-padding">
       <div className="container">
         <Reveal><h2 className="section-title">Selected Works</h2></Reveal>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem', perspective: '2000px' }}>
+        <div className="projects-grid">
         {projects.map((p, i) => (
           <motion.div
             key={i}

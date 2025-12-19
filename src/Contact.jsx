@@ -14,7 +14,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" style={{ padding: '10rem 0 6rem', textAlign: 'center' }}>
+    <section id="contact" className="section-padding-lg" style={{ textAlign: 'center' }}>
       <Reveal width="100%">
         <h2 style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)', fontWeight: 800, marginBottom: '1.5rem' }}>Let's work together.</h2>
         <p style={{ color: 'var(--text-secondary)', marginBottom: '3rem', fontSize: '1.2rem' }}>

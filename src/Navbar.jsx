@@ -1,12 +1,14 @@
 import React, { useContext, useState, useEffect, useRef } from 'react';
 import { CursorContext } from './CursorContext';
-import { FileText } from 'lucide-react';
+import { FileText, Menu, X } from 'lucide-react';
 import FestivalDoodle from './FestivalDoodle';
 import confetti from 'canvas-confetti';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
   const { textEnter, textLeave } = useContext(CursorContext);
   const [activeSection, setActiveSection] = useState('hero');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -59,21 +61,6 @@ const Navbar = () => {
     };
   }, []);
 
-  const navStyle = {
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    right: 0,
-    padding: '1.5rem 2rem',
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    zIndex: 100,
-    backdropFilter: 'blur(10px)',
-    background: 'rgba(5, 5, 5, 0.5)',
-    borderBottom: '1px solid rgba(255,255,255,0.05)'
-  };
-
   const getLinkStyle = (section) => ({
     fontSize: '0.9rem',
     fontWeight: 500,
@@ -83,7 +70,7 @@ const Navbar = () => {
   });
 
   return (
-    <nav style={navStyle}>
+    <nav className="navbar">
       <canvas 
         ref={canvasRef} 
         style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none' }} 
@@ -92,7 +79,20 @@ const Navbar = () => {
         SM.
         <FestivalDoodle />
       </div>
-      <div style={{ position: 'relative', zIndex: 1 }}>
+
+      {/* Mobile Menu Toggle */}
+      <div className="nav-toggle" style={{ position: 'relative', zIndex: 101 }}>
+        <button 
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          style={{ background: 'transparent', border: 'none', color: '#fff', display: 'flex', alignItems: 'center' }}
+          onMouseEnter={textEnter} onMouseLeave={textLeave}
+        >
+          {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
+      </div>
+
+      {/* Desktop Links */}
+      <div className="nav-links-desktop" style={{ position: 'relative', zIndex: 1 }}>
         <a href="#projects" style={getLinkStyle('projects')} onMouseEnter={textEnter} onMouseLeave={textLeave}>Work</a>
         <a href="#hackathons" style={getLinkStyle('hackathons')} onMouseEnter={textEnter} onMouseLeave={textLeave}>Hackathons</a>
         <a href="#skills" style={getLinkStyle('skills')} onMouseEnter={textEnter} onMouseLeave={textLeave}>Skills</a>
@@ -110,6 +110,38 @@ const Navbar = () => {
           <FileText size={16} /> Resume
         </a>
       </div>
+
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="mobile-menu"
+            style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '2rem' }}
+          >
+            {['projects', 'hackathons', 'skills', 'education', 'contact'].map((item) => (
+              <a 
+                key={item}
+                href={`#${item}`}
+                onClick={() => setIsMobileMenuOpen(false)}
+                style={{ fontSize: '1.5rem', fontWeight: 600, color: activeSection === item ? 'var(--accent)' : '#fff', textTransform: 'capitalize' }}
+              >
+                {item}
+              </a>
+            ))}
+            <a 
+              href="/resume.pdf" 
+              target="_blank" 
+              className="btn-primary"
+              style={{ marginTop: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.1rem', padding: '0.8rem 2rem' }}
+            >
+              <FileText size={20} /> Resume
+            </a>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };

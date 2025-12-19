@@ -7,6 +7,26 @@ const NewYearOverlay = () => {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
+    if (isVisible) {
+      // Lock scroll on both html and body for mobile support
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
+      
+      // Prevent touch scrolling on mobile
+      const preventDefault = (e) => e.preventDefault();
+      document.addEventListener('touchmove', preventDefault, { passive: false });
+      return () => {
+        document.documentElement.style.overflow = '';
+        document.body.style.overflow = '';
+        document.removeEventListener('touchmove', preventDefault);
+      };
+    } else {
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
+    }
+  }, [isVisible]);
+
+  useEffect(() => {
     if (!isVisible) return;
 
     // --- DATE LOGIC ---
@@ -68,10 +88,12 @@ const NewYearOverlay = () => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0, transition: { duration: 1.5, ease: "easeInOut" } }}
           style={{
-            position: 'fixed', inset: 0, zIndex: 10000,
+            position: 'fixed', top: 0, left: 0, width: '100vw', height: '100dvh',
+            zIndex: 10000,
             background: 'rgba(5, 5, 5, 0.95)', backdropFilter: 'blur(20px)',
             display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-            textAlign: 'center', padding: '2rem', overflow: 'hidden'
+            textAlign: 'center', padding: '2rem', overflow: 'hidden',
+            touchAction: 'none'
           }}
         >
           <button 

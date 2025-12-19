@@ -29,6 +29,7 @@ const BackToTop = () => {
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.5 }}
           onClick={scrollToTop}
+          className="back-to-top-btn"
           style={{
             position: 'fixed',
             bottom: '8rem', /* Positioned above LiveStats */
@@ -45,6 +46,11 @@ const BackToTop = () => {
           }}
           whileHover={{ y: -3, backgroundColor: 'var(--accent)', color: '#fff' }}
         >
+          <style>{`
+            @media (max-width: 768px) {
+              .back-to-top-btn { bottom: 7rem !important; right: 1rem !important; }
+            }
+          `}</style>
           <ArrowUp size={20} />
         </motion.button>
       )}

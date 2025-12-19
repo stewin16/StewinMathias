@@ -69,24 +69,27 @@ const LiveStats = () => {
   }, []);
 
   return (
-    <div style={{
-      position: 'fixed',
-      bottom: '2rem',
-      right: '2rem',
-      background: 'rgba(5, 5, 5, 0.8)',
-      backdropFilter: 'blur(10px)',
-      border: '1px solid rgba(255,255,255,0.1)',
-      padding: '1rem 1.5rem',
-      borderRadius: '16px',
-      zIndex: 50,
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '0.5rem',
-      boxShadow: '0 10px 30px -10px rgba(0,0,0,0.5)',
-      fontFamily: 'var(--font-sans)',
-      fontSize: '0.85rem',
-      color: '#888'
-    }}>
+    <div 
+      className="live-stats-widget"
+      style={{
+        position: 'fixed',
+        bottom: '2rem',
+        right: '2rem',
+        background: 'rgba(5, 5, 5, 0.8)',
+        backdropFilter: 'blur(10px)',
+        border: '1px solid rgba(255,255,255,0.1)',
+        padding: '1rem 1.5rem',
+        borderRadius: '16px',
+        zIndex: 50,
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '0.5rem',
+        boxShadow: '0 10px 30px -10px rgba(0,0,0,0.5)',
+        fontFamily: 'var(--font-sans)',
+        fontSize: '0.85rem',
+        color: '#888'
+      }}
+    >
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', color: '#fff', fontWeight: 600 }}>
         <div style={{ position: 'relative', display: 'flex' }}>
           <div style={{ width: 8, height: 8, background: '#22c55e', borderRadius: '50%' }}></div>
@@ -99,6 +102,11 @@ const LiveStats = () => {
         <span>{visits.toLocaleString()} Visits</span>
       </div>
       <style>{`
+        @media (max-width: 768px) {
+          .live-stats-widget {
+            bottom: 1rem !important; right: 1rem !important; padding: 0.8rem 1rem !important; transform: scale(0.9); transform-origin: bottom right;
+          }
+        }
         @keyframes ping {
           75%, 100% { transform: scale(2); opacity: 0; }
         }
