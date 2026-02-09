@@ -1,8 +1,6 @@
-import React, { useContext, useState, useEffect, useRef } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { CursorContext } from './CursorContext';
 import { FileText, Menu, X } from 'lucide-react';
-import FestivalDoodle from './FestivalDoodle';
-import confetti from 'canvas-confetti';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
@@ -29,36 +27,6 @@ const Navbar = () => {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const canvasRef = useRef(null);
-
-  useEffect(() => {
-    if (!canvasRef.current) return;
-
-    const myConfetti = confetti.create(canvasRef.current, {
-      resize: true,
-      useWorker: false
-    });
-
-    const interval = setInterval(() => {
-      myConfetti({
-        particleCount: 3,
-        startVelocity: 8,
-        spread: 360,
-        origin: { x: Math.random(), y: 0 },
-        colors: ['#6366f1', '#ec4899', '#ffffff'],
-        shapes: ['circle', 'square'],
-        gravity: 0.6,
-        scalar: 0.5,
-        ticks: 150
-      });
-    }, 200);
-
-    return () => {
-      clearInterval(interval);
-      myConfetti.reset();
-    };
   }, []);
 
   // Close mobile menu when clicking outside
@@ -93,10 +61,6 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <canvas 
-        ref={canvasRef} 
-        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none' }} 
-      />
       <div 
         onMouseEnter={textEnter} 
         onMouseLeave={textLeave} 
@@ -105,7 +69,6 @@ const Navbar = () => {
         onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
       >
         SM.
-        <FestivalDoodle />
       </div>
 
       {/* Mobile Menu Toggle */}
